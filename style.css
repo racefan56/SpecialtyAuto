@@ -1,0 +1,140 @@
+:root {
+  --main-color: #1864ab;
+  --secondary-color: #eef6fc;
+  --nav-width: 150px;
+  --space-from-heading: 225px;
+}
+
+body {
+  margin: 0;
+  background-color: var(--secondary-color);
+  overflow-x: hidden;
+}
+
+.site-heading {
+  white-space: nowrap;
+  position: fixed;
+  top: 8px;
+  width: calc(100% - 40px);
+  margin: 0px 8px;
+  margin-top: 0;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffff;
+  background-color: var(--main-color);
+  border: 4px solid var(--secondary-color);
+  outline: 4px solid var(--main-color);
+  padding: 16px 8px;
+  z-index: 1;
+}
+
+.site-heading h1 {
+  margin: 0;
+  font-size: 120px;
+}
+
+.contact {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 24px;
+  height: 50px;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--main-color);
+  padding-bottom: 24px;
+}
+
+nav {
+  position: fixed;
+  left: 24px;
+  top: var(--space-from-heading);
+  height: 100vh;
+  width: var(--nav-width);
+}
+
+nav .btn {
+  text-align: left;
+  padding-left: 16px;
+  transition: padding-left 0.5s ease-in-out;
+}
+
+nav .btn:hover {
+  padding-left: 48px;
+}
+
+.btn {
+  display: block;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--main-color);
+}
+
+.icon {
+  padding-right: 8px;
+}
+
+.container {
+  position: relative;
+  top: var(--space-from-heading);
+  height: 100vh;
+  width: 100vw;
+}
+
+.content {
+  position: relative;
+  left: var(--nav-width);
+}
+
+.panels {
+  display: flex;
+  justify-content: center;
+  width: calc(100% - var(--nav-width));
+}
+
+.panel {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 70vh;
+  outline: 4px solid var(--main-color);
+  border: 4px solid var(--secondary-color);
+  border-radius: 8px;
+  color: #ffff;
+  cursor: pointer;
+  width: 100px;
+  margin: 10px;
+  position: relative;
+  transition: width 0.7s ease-in;
+}
+
+.panel .caption {
+  box-sizing: border-box;
+  font-size: 24px;
+  overflow-x: hidden;
+  padding: 16px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  margin: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100px;
+  background-color: #0005;
+  transition: opacity 0.3s ease-out 0.6s;
+}
+
+.panel.active {
+  width: 50%;
+}
+
+.panel.active .caption,
+.panel.active .caption h3 {
+  opacity: 1;
+  transition: opacity 0.3s ease-in 0.6s;
+}
