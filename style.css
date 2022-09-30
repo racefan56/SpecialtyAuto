@@ -1,66 +1,59 @@
 :root {
   --main-color: #1864ab;
   --secondary-color: #eef6fc;
-  --nav-width: 150px;
-  --space-from-heading: 225px;
+  --contact-section-width: 275px;
+  --space-from-heading: 124px;
+  --space-from-nav: calc(var(--space-from-heading) + 125px);
 }
 
 body {
-  margin: 0;
+  margin: 24px;
+  margin-top: 0px;
   background-color: var(--secondary-color);
   overflow-x: hidden;
 }
 
 .site-heading {
   white-space: nowrap;
+  letter-spacing: 0.25cm;
+  margin-top: 2px;
   position: fixed;
-  top: 8px;
-  width: calc(100% - 40px);
-  margin: 0px 8px;
-  margin-top: 0;
+  width: 100%;
   text-align: center;
   text-transform: uppercase;
   color: #ffff;
+  border: 4px solid #ffff;
+  outline: 2px solid var(--main-color);
   background-color: var(--main-color);
-  border: 4px solid var(--secondary-color);
-  outline: 4px solid var(--main-color);
-  padding: 16px 8px;
+  padding: 0px 0px;
   z-index: 1;
 }
 
 .site-heading h1 {
-  margin: 0;
-  font-size: 120px;
-}
-
-.contact {
-  display: flex;
-  justify-content: space-evenly;
-  font-size: 24px;
-  height: 50px;
-  font-weight: 600;
-  font-style: italic;
-  color: var(--main-color);
-  padding-bottom: 24px;
+  margin: 0px;
+  margin-bottom: 16px;
+  font-size: 84px;
 }
 
 nav {
   position: fixed;
-  left: 24px;
   top: var(--space-from-heading);
-  height: 100vh;
-  width: var(--nav-width);
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  border-bottom: 2px solid var(--main-color);
+  background-color: var(--secondary-color);
+  z-index: 1;
 }
 
 nav .btn {
-  text-align: left;
-  padding-left: 16px;
-  transition: padding-left 0.5s ease-in-out;
+  text-align: center;
+  padding-bottom: 16px;
 }
 
-nav .btn:hover {
-  padding-left: 48px;
-}
+/* nav .btn:hover {
+
+} */
 
 .btn {
   display: block;
@@ -75,20 +68,57 @@ nav .btn:hover {
   color: var(--main-color);
 }
 
-.icon {
-  padding-right: 8px;
+.icon-nav {
+  margin-right: 8px;
+}
+
+.icon-contact {
+  display: block;
+  font-size: 48px;
+  text-align: center;
+  color: var(--main-color);
+  padding-bottom: 16px;
 }
 
 .container {
   position: relative;
-  top: var(--space-from-heading);
+  display: flex;
+  top: var(--space-from-nav);
   height: 100vh;
   width: 100vw;
 }
 
+.contact-section {
+  top: var(--space-from-nav);
+  width: var(--contact-section-width);
+  height: 100vh;
+  text-align: center;
+}
+
+.contact-div {
+  margin-bottom: 80px;
+  color: var(--main-color);
+}
+
+.contact-detail {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.contact-detail a {
+  text-decoration: none;
+}
+
+.contact-heading {
+  text-transform: uppercase;
+  color: var(--main-color);
+  border-bottom: 2px solid var(--main-color);
+}
+
 .content {
   position: relative;
-  left: var(--nav-width);
+  width: calc(100vw - var(--contact-section-width));
 }
 
 .panels {
@@ -101,14 +131,14 @@ nav .btn:hover {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 70vh;
+  height: 60vh;
   outline: 4px solid var(--main-color);
   border: 4px solid var(--secondary-color);
   border-radius: 8px;
   color: #ffff;
   cursor: pointer;
   width: 100px;
-  margin: 10px;
+  margin: 0px 16px;
   position: relative;
   transition: width 0.7s ease-in;
 }
