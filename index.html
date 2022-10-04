@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bevan&display=fallback"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
@@ -16,22 +22,16 @@
   </head>
   <body>
     <div class="site-heading">
-      <h1>Specialy Automotive</h1>
-      <!-- <div class="contact">
-        <span
-          ><i class="fa-solid fa-location-dot icon"></i>7850 Leavenworth Rd,
-          Kansas City, KS 66109
-        </span>
-      </div> -->
+      <h1>Specialty Automotive</h1>
     </div>
     <nav>
-      <a href="./index.html" class="btn"
+      <a href="./index.html" class="btn nav-btn"
         ><i class="fa-solid fa-house icon-nav"></i>Home</a
       >
-      <a href="./contact.html" class="btn"
+      <a href="./contact.html" class="btn nav-btn"
         ><i class="fa-solid fa-screwdriver-wrench icon-nav"></i>Services</a
       >
-      <a href="./about.html" class="btn"
+      <a href="./about.html" class="btn nav-btn"
         ><i class="fa-solid fa-circle-info icon-nav"></i>About</a
       >
     </nav>
@@ -45,20 +45,29 @@
             >
           </div>
           <div class="contact-div">
-            <i class="fa-solid fa-location-dot icon-contact"></i>
-            <span class="contact-detail"
-              >7850 Leavenworth Rd <br />
-              Kansas City, KS 66109</span
+            <a
+              href="https://www.google.com/maps/place/7850+Leavenworth+Rd,+Kansas+City,+KS+66109/@39.1438826,-94.7633386,17z/data=!3m1!4b1!4m5!3m4!1s0x87c08b7cf7404051:0xc955d3e965eeafd4!8m2!3d39.1438826!4d-94.7611499"
+              target="_blank"
+              class="contact-detail"
             >
+              <div class="contact-div">
+                <i class="fa-solid fa-location-dot icon-contact"></i>
+                <span
+                  >7850 Leavenworth Rd <br />
+                  Kansas City, KS 66109</span
+                >
+              </div>
+            </a>
           </div>
+
           <div class="contact-div">
             <i class="fa-solid fa-clock icon-contact"></i>
             <span class="contact-detail">
+              <small>(Closed for lunch 12pm-1pm)</small>
+              <br />
               M-F: 8:00 AM - 5:30 PM
               <br />
-              SAT-SUN: CLOSED
-              <br />
-              (Closed for lunch 12pm-1pm)
+              Sat & Sun: Closed
             </span>
           </div>
         </div>
@@ -90,17 +99,6 @@
           <div
             class="panel"
             id="panel-3"
-            style="
-              background-image: url('imgs/chad-kirchoff-xe-e69j6-Ds-unsplash.jpg');
-            "
-          >
-            <h3 class="caption">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </h3>
-          </div>
-          <div
-            class="panel"
-            id="panel-4"
             style="
               background-image: url('imgs/chad-kirchoff-xe-e69j6-Ds-unsplash.jpg');
             "

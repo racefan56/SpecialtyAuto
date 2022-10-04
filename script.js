@@ -1,3 +1,4 @@
+// PANELS //
 const panels = document.querySelectorAll('.panel');
 
 let activePanelIndex = 0;
@@ -9,3 +10,7 @@ panels.forEach((panel, index) => {
     activePanelIndex = index;
   });
 });
+
+// NAV BUTTONS //
+const navBtns = document.querySelectorAll('.nav-btn');
+

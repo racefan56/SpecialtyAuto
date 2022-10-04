@@ -1,30 +1,28 @@
 :root {
-  --main-color: #1864ab;
-  --secondary-color: #eef6fc;
-  --contact-section-width: 275px;
-  --space-from-heading: 124px;
-  --space-from-nav: calc(var(--space-from-heading) + 125px);
+  --main-color: #e1e8ee;
+  --secondary-color: #184974;
+  --shadow-color: #061420;
+  --contact-section-width: 260px;
+  --nav-width: 100%;
+  --nav-btn-width: 12%;
+  --space-from-nav: 48px;
 }
 
 body {
-  margin: 24px;
-  margin-top: 0px;
+  margin: 0px 24px;
   background-color: var(--secondary-color);
   overflow-x: hidden;
 }
 
 .site-heading {
+  box-sizing: border-box;
   white-space: nowrap;
   letter-spacing: 0.25cm;
-  margin-top: 2px;
-  position: fixed;
   width: 100%;
   text-align: center;
   text-transform: uppercase;
   color: #ffff;
-  border: 4px solid #ffff;
-  outline: 2px solid var(--main-color);
-  background-color: var(--main-color);
+  background-color: var(--secondary-color);
   padding: 0px 0px;
   z-index: 1;
 }
@@ -32,82 +30,117 @@ body {
 .site-heading h1 {
   margin: 0px;
   margin-bottom: 16px;
-  font-size: 84px;
+  font-size: 48px;
+  font-family: 'Bevan';
+  font-weight: 400;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #dcdcc8;
+  text-shadow: 0px 0px 8px var(--shadow-color);
 }
 
 nav {
-  position: fixed;
-  top: var(--space-from-heading);
+  box-sizing: border-box;
+  position: relative;
   display: flex;
   justify-content: space-evenly;
-  width: 100%;
-  border-bottom: 2px solid var(--main-color);
+  width: var(--nav-width);
+  height: 95px;
   background-color: var(--secondary-color);
-  z-index: 1;
+  z-index: 2;
 }
 
 nav .btn {
+  display: flex;
+  position: absolute;
+  top: 0%;
+  left: calc(20% - var(--nav-btn-width) / 2);
+  flex-direction: column;
+  align-items: center;
+  color: var(--secondary-color);
+  background-color: var(--main-color);
+  box-shadow: 0px 0px 16px var(--shadow-color);
+  rotate: -10deg;
+  border-radius: 8px;
+  margin: 4px;
   text-align: center;
-  padding-bottom: 16px;
+  height: 65%;
+  width: var(--nav-btn-width);
+  transition: width 0.4s ease-in-out, height 0.4s ease-in-out,
+    rotate 0.7s ease-in-out, left 0.7s ease-in-out, font-size 0.4s ease-in-out,
+    background-color 0.4s ease-in-out, color 0.4s ease-in-out;
 }
 
-/* nav .btn:hover {
+nav .btn + .btn {
+  left: calc(50% - var(--nav-btn-width) / 2);
+}
 
-} */
+nav .btn + .btn + .btn {
+  left: calc(80% - var(--nav-btn-width) / 2);
+}
+
+nav .btn:hover {
+  animation-duration: 0.7s;
+  animation-name: navBtnHover;
+  rotate: 10deg;
+  width: 15%;
+  height: 80%;
+  font-size: 22px;
+  color: var(--secondary-color);
+  background-color: #ffff;
+}
 
 .btn {
   display: block;
-  padding-top: 24px;
-  padding-bottom: 24px;
+  padding-top: 16px;
+  padding-bottom: 16px;
   width: 100%;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   color: var(--main-color);
 }
 
 .icon-nav {
-  margin-right: 8px;
-}
-
-.icon-contact {
-  display: block;
-  font-size: 48px;
-  text-align: center;
-  color: var(--main-color);
-  padding-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 .container {
   position: relative;
   display: flex;
-  top: var(--space-from-nav);
-  height: 100vh;
+  margin-top: var(--space-from-nav);
+  height: 100%;
   width: 100vw;
 }
 
 .contact-section {
-  top: var(--space-from-nav);
   width: var(--contact-section-width);
-  height: 100vh;
+  height: 100%;
   text-align: center;
 }
 
 .contact-div {
-  margin-bottom: 80px;
+  margin-bottom: 48px;
   color: var(--main-color);
 }
 
+.contact-div i {
+  display: block;
+  font-size: 36px;
+  text-align: center;
+  color: var(--main-color);
+  padding-bottom: 8px;
+}
+
 .contact-detail {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   line-height: 1.5;
 }
 
 .contact-detail a {
-  text-decoration: none;
+  color: var(--main-color);
 }
 
 .contact-heading {
@@ -124,14 +157,14 @@ nav .btn {
 .panels {
   display: flex;
   justify-content: center;
-  width: calc(100% - var(--nav-width));
+  width: 100%;
 }
 
 .panel {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 60vh;
+  height: 55vh;
   outline: 4px solid var(--main-color);
   border: 4px solid var(--secondary-color);
   border-radius: 8px;
@@ -167,4 +200,14 @@ nav .btn {
 .panel.active .caption h3 {
   opacity: 1;
   transition: opacity 0.3s ease-in 0.6s;
+}
+
+@keyframes navBtnHover {
+  from {
+    rotate: -10deg;
+  }
+
+  to {
+    rotate: 10deg;
+  }
 }
