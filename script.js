@@ -14,3 +14,23 @@ panels.forEach((panel, index) => {
 // NAV BUTTONS //
 const navBtns = document.querySelectorAll('.nav-btn');
 
+// SERVICE
+const boxes = document.querySelectorAll('.service');
+
+window.addEventListener('scroll', checkBoxes);
+
+function checkBoxes() {
+  const triggerBottom = (window.innerHeight / 5) * 4;
+
+  boxes.forEach((box) => {
+    const boxTop = box.getBoundingClientRect().top;
+
+    if (boxTop < triggerBottom) {
+      box.classList.add('show');
+    } else {
+      box.classList.remove('show');
+    }
+  });
+}
+
+checkBoxes();
