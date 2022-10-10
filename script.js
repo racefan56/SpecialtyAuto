@@ -1,20 +1,19 @@
-// PANELS //
-const panels = document.querySelectorAll('.panel');
+// PAGE TRANSITION //
+window.transitionToPage = function (href) {
+  document.querySelector('body').style.opacity = 0;
+  setTimeout(function () {
+    window.location.href = href;
+  }, 500);
+};
 
-let activePanelIndex = 0;
-
-panels.forEach((panel, index) => {
-  panel.addEventListener('click', () => {
-    panels[activePanelIndex].classList.remove('active');
-    panel.classList.add('active');
-    activePanelIndex = index;
-  });
+document.addEventListener('DOMContentLoaded', function (event) {
+  document.querySelector('body').style.opacity = 1;
 });
 
 // NAV BUTTONS //
 const navBtns = document.querySelectorAll('.nav-btn');
 
-// SERVICE
+// SERVICE //
 const boxes = document.querySelectorAll('.service');
 
 window.addEventListener('scroll', checkBoxes);
@@ -24,7 +23,7 @@ function checkBoxes() {
 
   boxes.forEach((box) => {
     const boxTop = box.getBoundingClientRect().top;
-
+    console.log(boxTop);
     if (boxTop < triggerBottom) {
       box.classList.add('show');
     } else {
@@ -32,5 +31,5 @@ function checkBoxes() {
     }
   });
 }
-
-checkBoxes();
+// Run the function once after page transition animation has completed
+setTimeout(checkBoxes, 2000);

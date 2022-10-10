@@ -9,8 +9,14 @@
   --space-from-nav: 48px;
 }
 
+/* PAGE TRANSITION */
 body {
-  margin: 0px 24px;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+body {
+  margin: 24px;
   background-color: var(--secondary-color);
   overflow-x: hidden;
 }
@@ -26,6 +32,10 @@ body {
   background-color: var(--secondary-color);
   padding: 0px 0px;
   z-index: 1;
+  padding-bottom: 100vh;
+  opacity: 0;
+  animation: 1s ease 1s normal forwards 1 scrollUp,
+    1s ease 1s normal forwards 1 fadein;
 }
 
 .site-heading h1 {
@@ -64,11 +74,10 @@ nav .btn {
   border-radius: 8px;
   margin: 4px;
   text-align: center;
-  height: 65%;
   width: var(--nav-btn-width);
-  transition: width 0.4s ease-in-out, height 0.4s ease-in-out,
-    rotate 0.7s ease-in-out, left 0.7s ease-in-out, font-size 0.4s ease-in-out,
-    background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+  transition: rotate 0.7s ease-in-out, left 0.7s ease-in-out,
+    font-size 0.4s ease-in-out, background-color 0.4s ease-in-out,
+    color 0.4s ease-in-out, padding 0.4s ease-in-out;
 }
 
 nav .btn + .btn {
@@ -80,11 +89,11 @@ nav .btn + .btn + .btn {
 }
 
 nav .btn:hover {
+  cursor: pointer;
   animation-duration: 0.7s;
   animation-name: navBtnHover;
   rotate: 10deg;
-  width: 15%;
-  height: 80%;
+  padding: 24px 24px;
   font-size: 22px;
   color: var(--secondary-color);
   background-color: #ffff;
@@ -110,6 +119,7 @@ nav .btn:hover {
 .container {
   position: relative;
   display: flex;
+  justify-content: space-evenly;
   margin-top: var(--space-from-nav);
   height: 100%;
   /* 24px is the margin on each side of the body = 48px */
@@ -117,8 +127,8 @@ nav .btn:hover {
 }
 
 .contact-section {
-  width: var(--contact-section-width);
   height: 100%;
+  min-width: 200px;
   text-align: center;
 }
 
@@ -153,7 +163,10 @@ nav .btn:hover {
 
 .content {
   position: relative;
-  width: calc(100vw - var(--contact-section-width));
+}
+
+.content.services {
+  width: 100%;
 }
 
 .panels {
@@ -204,16 +217,6 @@ nav .btn:hover {
   transition: opacity 0.3s ease-in 0.6s;
 }
 
-@keyframes navBtnHover {
-  from {
-    rotate: -10deg;
-  }
-
-  to {
-    rotate: 10deg;
-  }
-}
-
 /* HOME PAGE SPECIFIC */
 .home-img {
   padding: 8px;
@@ -221,27 +224,21 @@ nav .btn:hover {
   border: 4px solid var(--secondary-color);
   outline: 4px solid var(--main-color);
   border-radius: 8px;
-  max-width: 90%;
-  max-height: 90%;
-}
-
-.content.home {
-  display: flex;
-  justify-content: center;
 }
 
 /* ABOUT PAGE SPECIFIC */
 
 .about-article {
   position: relative;
-  margin-right: 48px;
-  margin-bottom: 24px;
+  margin: 0px 24px 24px 24px;
   border: 2px solid var(--main-color);
   padding: 16px;
   border-radius: 8px;
   background-color: var(--main-color);
   color: var(--secondary-color);
   box-shadow: 0px 0px 16px var(--shadow-color);
+  opacity: 0;
+  animation: 1s ease 1s normal forwards 1 fadein;
 }
 
 .img-container {
@@ -264,7 +261,9 @@ nav .btn:hover {
 .services-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 300px 300px 300px;
+  grid-template-rows: 360px 360px 360px;
+  gap: 48px 36px;
+  padding: 0px 24px 48px 48px;
 }
 
 .service {
@@ -273,13 +272,13 @@ nav .btn:hover {
   box-shadow: 0px 0px 16px var(--shadow-color);
   color: var(--main-color);
   border-radius: 8px;
-  margin: 24px;
-  transform: translateX(400%);
+  height: 100%;
+  transform: translateX(300%);
   transition: transform 2s ease;
 }
 
 .service:nth-of-type(even) {
-  transform: translateX(-400%);
+  transform: translateX(-300%);
 }
 
 .service.show {
@@ -290,9 +289,9 @@ nav .btn:hover {
   position: absolute;
   box-sizing: border-box;
   bottom: 0;
+  padding-top: 59px;
   width: 100%;
   height: 100%;
-  padding-top: 59px;
   border-radius: 8px;
 }
 
@@ -308,4 +307,44 @@ nav .btn:hover {
   width: 100%;
   font-size: 24px;
   background-color: var(--overlay-color);
+}
+
+/* ANIMATION KEYFRAMES */
+
+@keyframes navBtnHover {
+  from {
+    rotate: -10deg;
+  }
+
+  to {
+    rotate: 10deg;
+  }
+}
+
+@keyframes scrollUp {
+  from {
+    padding-bottom: 100vh;
+  }
+
+  to {
+    padding-bottom: 0vh;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
