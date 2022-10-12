@@ -6,6 +6,7 @@
   --contact-section-width: 260px;
   --nav-width: 100%;
   --nav-btn-width: 12%;
+  --nav-btn-min-width: 86px;
   --space-from-nav: 48px;
 }
 
@@ -18,12 +19,10 @@ body {
 body {
   margin: 24px;
   background-color: var(--secondary-color);
-  overflow-x: hidden;
 }
 
 .site-heading {
   box-sizing: border-box;
-  white-space: nowrap;
   letter-spacing: 0.25cm;
   width: 100%;
   text-align: center;
@@ -52,8 +51,6 @@ body {
 nav {
   box-sizing: border-box;
   position: relative;
-  display: flex;
-  justify-content: space-evenly;
   width: var(--nav-width);
   height: 95px;
   background-color: var(--secondary-color);
@@ -62,6 +59,7 @@ nav {
 
 nav .btn {
   display: flex;
+  justify-content: center;
   position: absolute;
   top: 0%;
   left: calc(20% - var(--nav-btn-width) / 2);
@@ -75,6 +73,7 @@ nav .btn {
   margin: 4px;
   text-align: center;
   width: var(--nav-btn-width);
+  min-width: var(--nav-btn-min-width);
   transition: rotate 0.7s ease-in-out, left 0.7s ease-in-out,
     font-size 0.4s ease-in-out, background-color 0.4s ease-in-out,
     color 0.4s ease-in-out, padding 0.4s ease-in-out;
@@ -262,7 +261,7 @@ nav .btn:hover {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 360px 360px 360px;
-  gap: 48px 36px;
+  gap: 64px 48px;
   padding: 0px 24px 48px 48px;
 }
 
@@ -273,12 +272,12 @@ nav .btn:hover {
   color: var(--main-color);
   border-radius: 8px;
   height: 100%;
-  transform: translateX(300%);
+  transform: translateX(400%);
   transition: transform 2s ease;
 }
 
 .service:nth-of-type(even) {
-  transform: translateX(-300%);
+  transform: translateX(-400%);
 }
 
 .service.show {
@@ -307,6 +306,64 @@ nav .btn:hover {
   width: 100%;
   font-size: 24px;
   background-color: var(--overlay-color);
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 1250px) {
+  .site-heading h1 {
+    font-size: 56px;
+  }
+}
+
+@media (max-width: 1125px) {
+  .site-heading h1 {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .site-heading h1 {
+    font-size: 40px;
+  }
+
+  nav .btn {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 875px) {
+  .site-heading h1 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 750px) {
+  body {
+    margin: 20px 8px;
+  }
+  .site-heading h1 {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 375px) {
+  .site-heading h1 {
+    font-size: 20px;
+  }
+
+  nav {
+    display: flex;
+  }
+
+  nav .btn {
+    position: static;
+    padding: 8px 0px;
+    height: max-content;
+    width: 100%;
+    min-width: auto;
+    rotate: 0deg;
+  }
 }
 
 /* ANIMATION KEYFRAMES */
