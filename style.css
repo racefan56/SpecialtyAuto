@@ -5,15 +5,20 @@
   --overlay-color: #0614209d;
   --contact-section-width: 260px;
   --nav-width: 100%;
-  --nav-btn-width: 12%;
+  --nav-btn-width: 15%;
   --nav-btn-min-width: 86px;
   --space-from-nav: 48px;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 /* PAGE TRANSITION */
 body {
   opacity: 0;
   transition: opacity 0.5s;
+  overflow-x: hidden;
 }
 
 body {
@@ -138,7 +143,7 @@ nav .btn:hover {
 
 .contact-div i {
   display: block;
-  font-size: 36px;
+  font-size: 32px;
   text-align: center;
   color: var(--main-color);
   padding-bottom: 8px;
@@ -162,6 +167,7 @@ nav .btn:hover {
 
 .content {
   position: relative;
+  margin-left: 24px;
 }
 
 .content.services {
@@ -218,6 +224,7 @@ nav .btn:hover {
 
 /* HOME PAGE SPECIFIC */
 .home-img {
+  width: 100%;
   padding: 8px;
   background-color: #fff;
   border: 4px solid var(--secondary-color);
@@ -229,7 +236,6 @@ nav .btn:hover {
 
 .about-article {
   position: relative;
-  margin: 0px 24px 24px 24px;
   border: 2px solid var(--main-color);
   padding: 16px;
   border-radius: 8px;
@@ -320,6 +326,9 @@ nav .btn:hover {
   .site-heading h1 {
     font-size: 48px;
   }
+  .services-container {
+    grid-template-rows: 340px 340px 340px;
+  }
 }
 
 @media (max-width: 1000px) {
@@ -327,42 +336,119 @@ nav .btn:hover {
     font-size: 40px;
   }
 
-  nav .btn {
-    font-size: 16px;
+  .services-container {
+    grid-template-rows: 300px 300px 300px;
   }
 }
 
+/* TRUE MOBILE VERSION OF SITE STARTS HERE */
 @media (max-width: 875px) {
-  .site-heading h1 {
-    font-size: 32px;
-  }
-}
-
-@media (max-width: 750px) {
+  /* 94 bottom margin is equal to the height of the navbar plus 24px of extra space */
   body {
-    margin: 20px 8px;
-  }
-  .site-heading h1 {
-    font-size: 26px;
-  }
-}
-
-@media (max-width: 375px) {
-  .site-heading h1 {
-    font-size: 20px;
+    margin: 24px 16px 94px 16px;
   }
 
   nav {
     display: flex;
+    position: fixed;
+    bottom: -100px;
+    left: 0;
+    background-color: var(--main-color);
+    height: fit-content;
+    box-shadow: 0px 0px 16px var(--shadow-color);
+    animation: 1s ease 1s normal forwards 1 scrollUpMobileNav;
   }
 
-  nav .btn {
+  nav .btn,
+  nav .btn:hover {
     position: static;
+    transition: none;
+    animation: none;
     padding: 8px 0px;
     height: max-content;
     width: 100%;
     min-width: auto;
     rotate: 0deg;
+    font-size: 18px;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  .site-heading h1 {
+    font-size: 32px;
+  }
+
+  .contact-section {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    padding: 16px 0px;
+    margin-bottom: 24px;
+  }
+
+  .contact-div {
+    margin-bottom: 0px;
+  }
+
+  .contact-div i {
+    font-size: 24px;
+  }
+
+  .container {
+    flex-direction: column;
+    margin-top: 24px;
+    width: 100%;
+  }
+
+  .services-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 70vw 70vw 70vw 70vw 70vw 70vw;
+    gap: 48px 0px;
+    padding: 0px 8px 24px 8px;
+  }
+
+  .content {
+    margin-left: 0px;
+  }
+}
+
+@media (max-width: 600px) {
+  .services-container {
+    gap: 36px 0px;
+  }
+
+  .service-description {
+    font-size: 18px;
+  }
+
+  .service-img {
+    padding-top: 52px;
+  }
+
+  .contact-section {
+    display: block;
+  }
+
+  .contact-div {
+    margin-bottom: 24px;
+  }
+
+  .contact-section :last-child {
+    margin-bottom: 0px;
+  }
+}
+
+@media (max-width: 450px) {
+  .site-heading h1 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 340px) {
+  .site-heading h1 {
+    letter-spacing: 0.1cm;
   }
 }
 
@@ -385,6 +471,16 @@ nav .btn:hover {
 
   to {
     padding-bottom: 0vh;
+  }
+}
+
+@keyframes scrollUpMobileNav {
+  from {
+    bottom: -100px;
+  }
+
+  to {
+    bottom: 0px;
   }
 }
 
