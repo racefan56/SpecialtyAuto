@@ -13,6 +13,17 @@ document.addEventListener('DOMContentLoaded', function (event) {
 // NAV BUTTONS //
 const navBtns = document.querySelectorAll('.nav-btn');
 
+// ADD CLASS TO NAV BTN RELATED TO THE CURRENT PAGE
+const path = window.location.pathname;
+console.log(path);
+if (path.startsWith('/index')) {
+  navBtns[0].classList.add('active-nav-btn');
+} else if (path.startsWith('/services')) {
+  navBtns[1].classList.add('active-nav-btn');
+} else {
+  navBtns[2].classList.add('active-nav-btn');
+}
+
 // SERVICE //
 const boxes = document.querySelectorAll('.service');
 
@@ -23,7 +34,6 @@ function checkBoxes() {
 
   boxes.forEach((box) => {
     const boxTop = box.getBoundingClientRect().top;
-    console.log(boxTop);
     if (boxTop < triggerBottom) {
       box.classList.add('show');
     } else {
